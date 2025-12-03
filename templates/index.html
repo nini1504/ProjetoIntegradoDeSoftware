@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mensagens</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <h1>Enviar Mensagem</h1>
+    <form id="mensagemForm">
+        <label>Título:</label><br>
+        <input type="text" name="title" required><br><br>
+        <label>Conteúdo:</label><br>
+        <textarea name="content" rows="4" cols="50" required></textarea><br><br>
+        <label>Publicada:</label>
+        <input type="checkbox" name="published" checked><br><br>
+        <button type="submit">Enviar</button>
+    </form>
+    <p id="mensagemSucesso" style="color: green;"></p>
+    <hr>
+    <h2>Mensagens cadastradas:</h2>
+    <ul id="listaMensagens">
+        {% for msg in messages %}
+        <li>
+            <strong>{{ msg.title }}</strong>: {{ msg.content }}
+            {% if msg.published %}[Publicada]{% else %}[Não publicada]{% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+
+<script src="/static/script.js"></script>
+</body>
+</html>

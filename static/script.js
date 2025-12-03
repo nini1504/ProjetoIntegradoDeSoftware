@@ -5,7 +5,7 @@ const lista = document.getElementById("listaMensagens");
 // Função para adicionar uma mensagem na lista HTML
 function adicionarMensagemNaLista(msg) {
     const li = document.createElement("li");
-    li.innerHTML = `<strong>${msg.title}</strong>: ${msg.content} ${msg.published ?
+    li.innerHTML = `<strong>${msg.title}</strong> ${msg.content} ${msg.published ?
         '[Publicada]' : '[Não publicada]'}`;
     lista.appendChild(li);
 }
@@ -13,10 +13,12 @@ function adicionarMensagemNaLista(msg) {
 // Evento de envio do formulário
 form.addEventListener("submit", async (e) => {
     e.preventDefault(); // evita recarregar a página
+
     // Captura os dados do formulário
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
     data.published = formData.has("publicada"); // checkbox
+        
     // Envia para a API via POST
     const response = await fetch("/mensagens", {
         method: "POST",

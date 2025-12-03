@@ -23,7 +23,7 @@
     <ul id="listaMensagens">
         {% for msg in messages %}
         <li>
-            <strong>{{ msg.title }}</strong>: {{ msg.content }}
+            <strong>{{ msg.title }}</strong> {{ msg.content }}
             {% if msg.published %}[Publicada]{% else %}[Não publicada]{% endif %}
         </li>
         {% endfor %}
